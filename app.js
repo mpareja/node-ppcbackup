@@ -4,7 +4,7 @@ var fs = require('fs');
 var rs = fs.createReadStream('test.csv');
 rs.setEncoding('ascii');
 
-var emitter = (function (rs) {
+var lineEmitter = (function (rs) {
   var instance = new EventEmitter();
   instance.line = function (line) {
     if (line) {
@@ -31,9 +31,9 @@ var emitter = (function (rs) {
 }(rs));
 
 
-emitter.on('line', function (line) { console.log('DATA: ' + line); });
-emitter.on('error', console.error);
-emitter.on('end', function () {
+lineEmitter.on('line', function (line) { console.log('DATA: ' + line); });
+lineEmitter.on('error', console.error);
+lineEmitter.on('end', function () {
   console.log('done.');
   process.exit();
 });
