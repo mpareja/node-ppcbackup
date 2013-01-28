@@ -1,4 +1,7 @@
-var decsv = require('decsv');
+var decsv = require('./decsv');
+var fs = require('fs');
+var map = require('map-stream');
+
 var startAtLine = process.argv[2] || 0;
 var filter = process.argv[3] ? new RegExp(process.argv[3]) : null;
 
