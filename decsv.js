@@ -5,8 +5,7 @@ var split = require('split');
 
 module.exports = function (filename, startAtLine, filter) {
   var binaryRegex = /^(0x[0-9a-fA-F][0-9a-fA-F],?)+$/;
-  var rs = fs.createReadStream(filename);
-  rs.setEncoding('utf16le');
+  var rs = fs.createReadStream(filename, { encoding: 'utf16le' });
 
   var filteredRows = (function () {
     var lineIndex = 0;
